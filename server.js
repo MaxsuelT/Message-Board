@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const messageRouter = require("./routes/message")
+const Message = require("./models/messagesModel")
 const app = express()
 
 
@@ -10,9 +11,19 @@ mongoose.connect('mongodb://localhost:27017/message')
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-app.use('/message', messageRouter)
+
 
 app.get('/', (req, res) =>{
+    
+    // try{
+    //     const message = new Message()
+    //     console.log(message)
+    //     res.render('messages/index', {messages: message })
+    // }
+    // catch (e){
+    //     console.log(e)
+    // }
+   
     res.render('messages/index',{ messages: [
         {
             title: 'First Card',
@@ -21,22 +32,12 @@ app.get('/', (req, res) =>{
             createdAt: new Date(Date.now()),
             hastag: "#tag 1, #tag2"
         },
-        {
-            title: 'Second Card',
-            author: 'John',
-            message: 'Second Message',
-            createdAt: new Date(Date.now()),
-            hastag: "#tag 1, #∆tag2"
-        }
+        
     ]})
 })
   
 
-
-
-    
-
-
+app.use('/message', messageRouter)
 
 
 
