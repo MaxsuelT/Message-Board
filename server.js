@@ -11,29 +11,31 @@ mongoose.connect('mongodb://localhost:27017/message')
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+app.use(express.urlencoded({extended: false}))
 
-
-app.get('/', (req, res) =>{
-    
-    // try{
-    //     const message = new Message()
-    //     console.log(message)
-    //     res.render('messages/index', {messages: message })
-    // }
-    // catch (e){
-    //     console.log(e)
-    // }
+app.get('/', async (req, res) =>{
+    let messages =  await Message.find()
+    res.render('messages/index', {messages: messages})
+    // res.render('messages/index',{messages: messages})
+    // const messages = [
+    //     {
+    //     title: 'First Title',
+    //     author: 'Max',
+    //     createdAt: new Date(Date.now()),
+    //     message: 'First Message',   
+    //     // hastag: "#tag 1, #tag2"
+    //     },
+    //     {
+    //         title: 'Second Title',
+    //         author: 'Maria',
+    //         createdAt: new Date(Date.now()),
+    //         message: 'Seconnd Message',   
+    //     // hastag: "#tag 1, #tag2"
+    //     }
+//   ]
    
-    res.render('messages/index',{ messages: [
-        {
-            title: 'First Card',
-            author: 'Max',
-            message: 'First Message',
-            createdAt: new Date(Date.now()),
-            hastag: "#tag 1, #tag2"
-        },
+   
         
-    ]})
 })
   
 
