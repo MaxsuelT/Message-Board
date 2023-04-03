@@ -14,7 +14,9 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: false}))
 
 app.get('/', async (req, res) =>{
-    let messages =  await Message.find()
+    let messages =  await Message.find().sort({
+        createdAt: "descending"
+    })
     res.render('messages/index', {messages: messages})
     // res.render('messages/index',{messages: messages})
     // const messages = [
