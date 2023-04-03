@@ -15,7 +15,10 @@
         </header>
         
         <main>
-            <form method="POST" action="/messages">
+            <!-- action = file that is processing the data
+                in this case is the routes/message
+            -->
+            <form method="POST" action="/message">
                 <div class="form-group mb-3">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" placeholder="Message's title" id="title" 
@@ -28,10 +31,8 @@
 
                 </div>
                 <div class="form-group mb-3">
-                    <label for="texarea">Message</label>
-                    <textarea class="form-control" name="textarea" id="textarea" rows="3" placeholder="Type your message">
-                        <%= message.message %>
-                    </textarea>
+                    <label for="message">Message</label>
+                    <textarea class="form-control" name="message" id="message" placeholder="Type your message"><%= message.message %></textarea>
                 </div>
                 <a href="/" class="btn btn-secondary">Cancel</a>
                 <button type="submit" class="btn btn-primary">Send Message</button>
