@@ -31,21 +31,26 @@
                             <%= message.createdAt.toLocaleDateString() %>
                         </h6>
                     </div>
-                    <div class="card-text mb-2">
+                    <div class="card-text mb-3">
                         <%= message.message %>
                     </div>
-                    <!-- <div class="card-footer">
-                       <%= message.hastag %> 
-                    </div> -->
+                    
 
+                <form action="/message/<%= message.id %>?_method=DELETE"
+                    method="POST" class="d-inline">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
                 </div>
                
+
+
             </div>
 
+
+           
             <% }) %>
 
-            
-
+         
         </main>
 
     </div>
