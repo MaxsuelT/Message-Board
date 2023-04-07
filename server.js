@@ -15,33 +15,15 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: false}))
 app.use(override('_method'))
 
+
 app.get('/', async (req, res) =>{
     let messages =  await Message.find().sort({
         createdAt: "descending"
     })
     res.render('messages/index', {messages: messages})
-    // res.render('messages/index',{messages: messages})
-    // const messages = [
-    //     {
-    //     title: 'First Title',
-    //     author: 'Max',
-    //     createdAt: new Date(Date.now()),
-    //     message: 'First Message',   
-    //     // hastag: "#tag 1, #tag2"
-    //     },
-    //     {
-    //         title: 'Second Title',
-    //         author: 'Maria',
-    //         createdAt: new Date(Date.now()),
-    //         message: 'Seconnd Message',   
-    //     // hastag: "#tag 1, #tag2"
-    //     }
-//   ]
-   
-   
         
 })
-  
+
 
 app.use('/message', messageRouter)
 
