@@ -5,17 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+   
     <title>Message Board</title>
 </head>
 <body>
-    <div class="container-sm">
+    <div class="container">
         <header class="mb-4">
             <h1 class="text-center">Message Board</h1>
         </header>
-        <nav class="text-center mb-3">
+        <nav class="text-center mb-5">
             <a href="/message/new" class="btn btn-primary ">New Message</a>
         </nav>
+
 
         <main >
             <% messages.forEach(message =>{ %>
@@ -27,22 +29,27 @@
                     </div>
                     <div class="card-subtitle mb-2">      
                         <h6>
-                            By <%= message.author %> On
-                            <%= message.createdAt.toLocaleDateString() %>
+                            By <%= message.author %> | Created On:
+                            <%= message.createdAt.toLocaleString('en-gb', {timezone: 'UTC'}) %>
+                            | Last Modified:
+                            <%= message.updatedAt.toLocaleString('en-gb',
+                            {timezone: 'UTC'}) %>
                         </h6>
                     </div>
                     <div class="card-text mb-3">
                         <%= message.message %>
                     </div>
                     
-
+                
+                <a href="message/edit/<%= message.id %>" class="btn btn-info ">Edit</a>    
+                
                 <form action="/message/<%= message.id %>?_method=DELETE"
                     method="POST" class="d-inline">
                     <button class="btn btn-danger">Delete</button>
                 </form>
                 </div>
                
-
+              
 
             </div>
 
@@ -54,6 +61,5 @@
         </main>
 
     </div>
-    
 </body>
 </html>
