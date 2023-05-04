@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Message Board</title>
 </head>
 <body>
@@ -30,12 +30,18 @@
                     name="author" value="<%= message.author %>">
 
                 </div>
+                <!-- <div class="form-group mb-3">
+                    <label for="preamble">Preamble</label>
+                    <textarea name="preamble" id="preamble" class="form-control" placeholder="Only available if you message is more than 100 characters."></textarea>
+
+                </div> -->
+
                 <div class="form-group mb-3">
                     <label for="message">Message</label>
                     <textarea class="form-control" name="message" id="message" placeholder="Type your message"><%= message.message %></textarea>
                 </div>
                 <a href="/" class="btn btn-secondary">Cancel</a>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button id="newMessageBtn" type="submit" class="btn btn-primary">Send Message</button>
     
             </form>
 
@@ -45,5 +51,6 @@
 
     </div>
     
+    <!-- <script src="/js/script.js"></script> -->
 </body>
 </html>
