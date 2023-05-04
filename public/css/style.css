@@ -1,5 +1,25 @@
-.container{
+/* .container{
     max-width: 960px;
+} */
+
+.dropdown {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+ 
 }
 
+.dropdown-list, .dropdown-delete {
+     all: unset;
+    
+}
+
+.hidden{
+    display: none;
+}
+
+.dropdown-edit, .dropdown-delete{
+    color: blue;
+    text-decoration: none;  
+}
 
